@@ -2,8 +2,8 @@
 #                                            UCF for Mimas                                                                                         #
 #**************************************************************************************************************************************************#
 
-NET "CLK" LOC = P126 | TNM = "CLK_TNM";
-TIMESPEC "TS_CLK" = PERIOD "CLK_TNM" 100 MHz HIGH 50%;
+#NET "CLK" LOC = P126 | TNM = "CLK_TNM";
+#TIMESPEC "TS_CLK" = PERIOD "CLK_TNM" 100 MHz HIGH 50%;
 
 NET "I2S_SYSCLK" LOC = P35 | TNM = "I2S_SYSCLK_TNM"; # P1-3
 TIMESPEC "TS_sysclk" = PERIOD "I2S_SYSCLK_TNM" 24.576 MHz HIGH 50%; 

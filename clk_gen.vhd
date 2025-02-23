@@ -22,7 +22,7 @@ begin
 		end if;
 	end process;
 
-	clk_div1 <= o_mclk;
+	clk_div1 <= in_clk;
 	clk_div64 <= counter(5);
 	clk_div512 <= counter(8);
 

@@ -22,15 +22,30 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="xc6-spec-an.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="i2s_master_intf.bld"/>
     <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="i2s_master_intf.cmd_log"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="i2s_master_intf.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="i2s_master_intf.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="i2s_master_intf.ngd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="i2s_master_intf.ngr"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="i2s_master_intf.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="i2s_master_intf.stx"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="i2s_master_intf.syr"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="i2s_master_intf.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="i2s_master_intf_envsettings.html"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="i2s_master_intf_map.map" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="i2s_master_intf_map.mrp" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGM" xil_pn:name="i2s_master_intf_map.ngm" xil_pn:subbranch="Map"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="i2s_master_intf_map.xrpt"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="i2s_master_intf_ngdbuild.xrpt"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="i2s_master_intf_summary.html"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="i2s_master_intf_xst.xrpt"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
 
@@ -63,21 +78,43 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1740333850" xil_pn:in_ck="1420112259280318641" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-5932645668765841112" xil_pn:start_ts="1740333847">
-      <status xil_pn:value="FailedRun"/>
+    <transform xil_pn:end_ts="1740334488" xil_pn:in_ck="1420112259280318641" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-5932645668765841112" xil_pn:start_ts="1740334484">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="i2s_master_intf.lso"/>
+      <outfile xil_pn:name="i2s_master_intf.ngc"/>
+      <outfile xil_pn:name="i2s_master_intf.ngr"/>
       <outfile xil_pn:name="i2s_master_intf.prj"/>
+      <outfile xil_pn:name="i2s_master_intf.stx"/>
       <outfile xil_pn:name="i2s_master_intf.syr"/>
       <outfile xil_pn:name="i2s_master_intf.xst"/>
       <outfile xil_pn:name="i2s_master_intf_xst.xrpt"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1740333850" xil_pn:in_ck="112913104423683" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="2293041090769605846" xil_pn:start_ts="1740333850">
+    <transform xil_pn:end_ts="1740334515" xil_pn:in_ck="112913104423683" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="2293041090769605846" xil_pn:start_ts="1740334515">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1740334519" xil_pn:in_ck="7909766462516072850" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-3711221793196796422" xil_pn:start_ts="1740334515">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+      <outfile xil_pn:name="i2s_master_intf.bld"/>
+      <outfile xil_pn:name="i2s_master_intf.ngd"/>
+      <outfile xil_pn:name="i2s_master_intf_ngdbuild.xrpt"/>
+    </transform>
+    <transform xil_pn:end_ts="1740334524" xil_pn:in_ck="7909766462516072851" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="6093601622908603872" xil_pn:start_ts="1740334519">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
+      <outfile xil_pn:name="i2s_master_intf_map.map"/>
+      <outfile xil_pn:name="i2s_master_intf_map.mrp"/>
+      <outfile xil_pn:name="i2s_master_intf_map.ngm"/>
+      <outfile xil_pn:name="i2s_master_intf_map.xrpt"/>
     </transform>
   </transforms>
 

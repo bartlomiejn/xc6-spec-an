@@ -21,7 +21,7 @@ architecture rtl of i2s_master_intf is
 	signal i_lrclk: std_logic;
 	signal i_bclk: std_logic;
 	
-	signal sr: std_logic_vector(31 downto 0) := (others => "0");
+	signal sr: std_logic_vector(31 downto 0);
 	signal sr_out: std_logic;
 begin
 	I2S_SYSCLK_IBUF: IBUF
@@ -30,7 +30,7 @@ begin
 			O => i_sysclk
 		);
 
-	clk_gen : entity clk_gen(rtl)
+	clk_gen : entity work.clk_gen(rtl)
 		port map (
 			in_clk => i_sysclk,
 			clk_div1 => i_mclk,
@@ -38,10 +38,10 @@ begin
 			clk_div512 => i_lrclk 
 		);
 
-	process(i_mclk, i_lrclk, i_bclk)
+	shift_in: process(i_mclk, i_lrclk, i_bclk)
 	begin
 		if rising_edge(i_bclk) then
-			sr <= sr(sr'high - 1 downto sr'low) & data;
+			sr <= sr(sr'high - 1 downto sr'low) & I2S_DATA;
 			sr_out <= sr(sr'high);
 		end if;
 	end process;

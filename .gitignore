@@ -37,4 +37,6 @@ xst
 **/*.ngm
 **/*.xrpt
 **/*.csv
-
+**/*.xmsgs
+**/*.map
+**/*.mrp
