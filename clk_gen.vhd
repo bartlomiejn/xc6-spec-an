@@ -13,7 +13,7 @@ entity clk_gen is
 end clk_gen;
 
 architecture rtl of clk_gen is
-	signal counter: unsigned(8 downto 0) := (others => "0");
+	signal counter: unsigned(8 downto 0);
 begin
 	process (in_clk)
 	begin
