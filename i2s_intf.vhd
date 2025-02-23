@@ -2,11 +2,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
 entity i2s_master_intf is
 	Port (
 		sysclk: in std_logic; -- System clock (24.576MHz)
@@ -15,8 +10,6 @@ entity i2s_master_intf is
 		mclk: out std_logic; -- Master clock
 		lrclk: out std_logic; -- Word clock
 		bclk: out std_logic -- Bit clock - 32bit per sample (24bit + 8bit padding), dual channel
-		
-		
 	);
 end i2s_master_intf;
 

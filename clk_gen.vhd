@@ -15,9 +15,9 @@ end clk_gen;
 architecture rtl of clk_gen is
 	signal counter: unsigned(8 downto 0) := (others => "0");
 begin
-	process (to_i2s)
+	process (in_clk)
 	begin
-		if rising_edge(to_i2s) then
+		if rising_edge(in_clk) then
 			counter <= counter + 1;
 		end if;
 	end process;

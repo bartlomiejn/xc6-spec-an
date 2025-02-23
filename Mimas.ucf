@@ -1,11 +1,3 @@
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-# This file is a .ucf for Mimas (http://www.numato.com)                                               #
-# To use it in your project :                                                                         #
-# * Remove or comment the lines corresponding to unused pins in the project.                          #
-# * Rename the used signals according to the your project.                                            #
-# * For more detail refer to the User Guide available at http://numato.com/products/fpga-boards/      #
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-
 #**************************************************************************************************************************************************#
 #                                            UCF for Mimas                                                                                         #
 #**************************************************************************************************************************************************#
