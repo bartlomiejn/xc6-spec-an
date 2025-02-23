@@ -9,6 +9,7 @@ webtalk_pn.xml
 _ngo
 xlnx_auto_*
 xst
+_xmsgs
 **/*.bit
 **/*.bld
 **/*.bgn
