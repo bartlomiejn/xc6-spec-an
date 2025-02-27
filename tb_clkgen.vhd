@@ -1,96 +1,104 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+library std;
+use std.textio.all;
  
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---USE ieee.numeric_std.ALL;
+entity tb_clkgen is
+end tb_clkgen;
  
-ENTITY tb_clkgen IS
-END tb_clkgen;
- 
-ARCHITECTURE test OF tb_clkgen IS 
- 
-    -- Component Declaration for the Unit Under Test (UUT)
- 
-    COMPONENT clk_gen
-    PORT(
-         in_clk : IN  std_logic;
-         clk_div1 : OUT  std_logic;
-         clk_div64 : OUT  std_logic;
-         clk_div512 : OUT  std_logic
-        );
-    END COMPONENT;
-    
-
-   --Inputs
+architecture test of tb_clkgen is 
+   --inputs
    signal in_clk : std_logic := '0';
+	signal in_rst : std_logic := '0';
 
- 	--Outputs
+ 	--outputs
    signal clk_div1 : std_logic;
    signal clk_div64 : std_logic;
    signal clk_div512 : std_logic;
+	
+	signal cnt_div1 : integer := 0;
+	signal cnt_div64 : integer := 0;
+	signal cnt_div512 : integer := 0;
 
-   -- Clock period definitions
-   constant in_clk_period : time := 10 ns;
-   constant clk_div1_period : time := 10 ns;
-   constant clk_div64_period : time := 10 ns;
-   constant clk_div512_period : time := 10 ns;
- 
-BEGIN
- 
-	-- Instantiate the Unit Under Test (UUT)
-   uut: clk_gen PORT MAP (
-          in_clk => in_clk,
-          clk_div1 => clk_div1,
-          clk_div64 => clk_div64,
-          clk_div512 => clk_div512
-        );
+   constant in_clk_period : time := 20.35 ns;
+	constant reset_period : time := 100 ns;
+	constant test_period : time := in_clk_period * 1024;
+	
+begin
+   uut: entity work.clkgen(rtl) port map (
+      in_clk => in_clk,
+		reset => in_rst,
+      clk_div1 => clk_div1,
+      clk_div64 => clk_div64,
+      clk_div512 => clk_div512
+   );
 
-   -- Clock process definitions
-   in_clk_process :process
+   input_clock: process
    begin
 		in_clk <= '0';
-		wait for in_clk_period/2;
+		wait for in_clk_period;
 		in_clk <= '1';
-		wait for in_clk_period/2;
+		wait for in_clk_period;
    end process;
- 
-   clk_div1_process :process
+	
+	count_div1: process(clk_div1)
+	begin
+		if rising_edge(clk_div1) then
+			cnt_div1 <= cnt_div1 + 1;
+		end if;
+	end process;
+	
+	count_div64: process(clk_div64)
+	begin
+		if rising_edge(clk_div64) then
+			cnt_div64 <= cnt_div64 + 1;
+		end if;
+	end process;
+	
+	count_div512: process(clk_div512)
+	begin
+		if rising_edge(clk_div512) then
+			cnt_div512 <= cnt_div512 + 1;
+		end if;
+	end process;
+
+   stimulus: process
    begin
-		clk_div1 <= '0';
-		wait for clk_div1_period/2;
-		clk_div1 <= '1';
-		wait for clk_div1_period/2;
-   end process;
- 
-   clk_div64_process :process
-   begin
-		clk_div64 <= '0';
-		wait for clk_div64_period/2;
-		clk_div64 <= '1';
-		wait for clk_div64_period/2;
-   end process;
- 
-   clk_div512_process :process
-   begin
-		clk_div512 <= '0';
-		wait for clk_div512_period/2;
-		clk_div512 <= '1';
-		wait for clk_div512_period/2;
-   end process;
- 
+		in_rst <= '1';
+      wait for reset_period;
+		in_rst <= '0';
+		
+		assert cnt_div1 = 0 and cnt_div64 = 0 and cnt_div512 = 0
+			report "Clocks should not pulse when reset is asserted"
+			severity error;
 
-   -- Stimulus process
-   stim_proc: process
-   begin		
-      -- hold reset state for 100 ns.
-      wait for 100 ns;	
+      wait for test_period;
 
-      wait for in_clk_period*10;
-
-      -- insert stimulus here 
-
-      wait;
+		assert cnt_div1 = 512 and cnt_div64 = 8 and cnt_div512 = 1
+			report "Output clocks did not pulse expected number of times"
+			severity error;
+			
+		wait;
    end process;
 
-END;
+	report_results: process
+		variable L: line;
+	begin
+		wait for test_period + reset_period;
+		
+		write(L, string'("div1 ticks: "));
+		write(L, cnt_div1);
+		writeline(output, L);
+
+		write(L, string'("div64 ticks: "));
+		write(L, cnt_div64);
+		writeline(output, L);
+
+		write(L, string'("div512 ticks: "));
+		write(L, cnt_div512);
+		writeline(output, L);
+
+		wait;
+	end process;
+
+end;

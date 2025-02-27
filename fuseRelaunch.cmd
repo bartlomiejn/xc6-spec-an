@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "/bartlomiejn/Projects/spartan6/xc6-spec-an/tb_clkgen_isim_beh.exe" -prj "/bartlomiejn/Projects/spartan6/xc6-spec-an/tb_clkgen_beh.prj" "work.tb_clkgen" 
