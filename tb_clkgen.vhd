@@ -7,39 +7,39 @@ entity tb_clkgen is
 end tb_clkgen;
  
 architecture test of tb_clkgen is 
-   --inputs
-   signal in_clk : std_logic := '0';
+	--inputs
+	signal in_clk : std_logic := '0';
 	signal in_rst : std_logic := '0';
 
  	--outputs
-   signal clk_div1 : std_logic;
-   signal clk_div64 : std_logic;
-   signal clk_div512 : std_logic;
+	signal clk_div1 : std_logic;
+	signal clk_div64 : std_logic;
+	signal clk_div512 : std_logic;
 	
 	signal cnt_div1 : integer := 0;
 	signal cnt_div64 : integer := 0;
 	signal cnt_div512 : integer := 0;
 
-   constant in_clk_period : time := 20.35 ns;
+	constant in_clk_period : time := 20.35 ns;
 	constant reset_period : time := 100 ns;
 	constant test_period : time := in_clk_period * 1024;
 	
 begin
-   uut: entity work.clkgen(rtl) port map (
-      in_clk => in_clk,
+	uut: entity work.clkgen(rtl) port map (
+		in_clk => in_clk,
 		reset => in_rst,
-      clk_div1 => clk_div1,
-      clk_div64 => clk_div64,
-      clk_div512 => clk_div512
-   );
+		clk_div1 => clk_div1,
+		clk_div64 => clk_div64,
+		clk_div512 => clk_div512
+	);
 
-   input_clock: process
-   begin
+	input_clock: process
+	begin
 		in_clk <= '0';
 		wait for in_clk_period;
 		in_clk <= '1';
 		wait for in_clk_period;
-   end process;
+	end process;
 	
 	count_div1: process(clk_div1)
 	begin
@@ -62,24 +62,24 @@ begin
 		end if;
 	end process;
 
-   stimulus: process
-   begin
+	stimulus: process
+	begin
 		in_rst <= '1';
-      wait for reset_period;
+		wait for reset_period;
 		in_rst <= '0';
 		
 		assert cnt_div1 = 0 and cnt_div64 = 0 and cnt_div512 = 0
 			report "Clocks should not pulse when reset is asserted"
 			severity error;
 
-      wait for test_period;
+		wait for test_period;
 
 		assert cnt_div1 = 512 and cnt_div64 = 8 and cnt_div512 = 1
 			report "Output clocks did not pulse expected number of times"
 			severity error;
 			
 		wait;
-   end process;
+	end process;
 
 	report_results: process
 		variable L: line;
