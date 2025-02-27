@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity clk_gen is
+entity clkgen is
 	Port (
 		in_clk: in std_logic; 
 		
@@ -10,9 +10,9 @@ entity clk_gen is
 		clk_div64: out std_logic; 
 		clk_div512: out std_logic
 	);
-end clk_gen;
+end clkgen;
 
-architecture rtl of clk_gen is
+architecture rtl of clkgen is
 	signal counter: unsigned(8 downto 0);
 begin
 	process (in_clk)

@@ -5,13 +5,16 @@
 #NET "CLK" LOC = P126 | TNM = "CLK_TNM";
 #TIMESPEC "TS_CLK" = PERIOD "CLK_TNM" 100 MHz HIGH 50%;
 
-NET "I2S_SYSCLK" LOC = P35 | TNM = "I2S_SYSCLK_TNM"; # P1-3
+NET "I2S_SYSCLK" LOC = P24 | TNM = "I2S_SYSCLK_TNM"; # P1-11, IO_L41P_GCLK27_3
 TIMESPEC "TS_sysclk" = PERIOD "I2S_SYSCLK_TNM" 24.576 MHz HIGH 50%; 
 
 NET "I2S_MCLK" LOC = P34 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; # P1-4 
 NET "I2S_BCLK" LOC = P33 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; # P1-5 
 NET "I2S_DATA" LOC = P32 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; # P1-6 
 NET "I2S_LRCLK" LOC = P30 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; # P1-7 
+
+# I2S_RCVR OUTPUT TEST
+NET "I2S_RCVR_OUT" LOC = P35 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; # P1-3
 
 ###################################################################################################################################################
 #                                                 LEDs                                                                                            #

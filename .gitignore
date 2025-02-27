@@ -10,6 +10,8 @@ _ngo
 xlnx_auto_*
 xst
 _xmsgs
+**/*.txt
+**/*.xml
 **/*.bit
 **/*.bld
 **/*.bgn
