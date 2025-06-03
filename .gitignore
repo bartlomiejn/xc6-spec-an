@@ -44,8 +44,6 @@ _xmsgs
 **/*.xmsgs
 **/*.map
 **/*.mrp
-**/*.gise
-**/*.xise
 xilinxsim.ini
 isim
 fuseRelaunch.cmd
