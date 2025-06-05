@@ -1,6 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+library unisim;
+use unisim.vcomponents.all;
 
 entity main is
 	Port (
@@ -16,6 +18,29 @@ entity main is
 end main;
 
 architecture rtl of main is
+	component xfft_v8_0
+		port (
+		 aclk : in STD_LOGIC := 'X'; 
+		 s_axis_config_tvalid : in STD_LOGIC := 'X'; 
+		 s_axis_data_tvalid : in STD_LOGIC := 'X'; 
+		 s_axis_data_tlast : in STD_LOGIC := 'X'; 
+		 m_axis_data_tready : in STD_LOGIC := 'X'; 
+		 s_axis_config_tready : out STD_LOGIC; 
+		 s_axis_data_tready : out STD_LOGIC; 
+		 m_axis_data_tvalid : out STD_LOGIC; 
+		 m_axis_data_tlast : out STD_LOGIC; 
+		 event_frame_started : out STD_LOGIC; 
+		 event_tlast_unexpected : out STD_LOGIC; 
+		 event_tlast_missing : out STD_LOGIC; 
+		 event_status_channel_halt : out STD_LOGIC; 
+		 event_data_in_channel_halt : out STD_LOGIC; 
+		 event_data_out_channel_halt : out STD_LOGIC; 
+		 s_axis_config_tdata : in STD_LOGIC_VECTOR ( 23 downto 0 ); 
+		 s_axis_data_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 ); 
+		 m_axis_data_tdata : out STD_LOGIC_VECTOR ( 63 downto 0 ) 
+	  );
+	end component;
+		
 	signal i_reset: std_logic;
 	signal i_sysclk: std_logic;
 	signal i_data: std_logic;
@@ -26,7 +51,7 @@ architecture rtl of main is
 	signal i_bclk: std_logic;
 	
 	signal i_i2s_tready: std_logic;
-	signal i_i2s_tdata: std_logic;
+	signal i_i2s_tdata: std_logic_vector(31 downto 0);
 	signal i_i2s_tvalid: std_logic;
 	
 	signal i_fft_s_axis_tdata  : std_logic_vector(15 downto 0);
@@ -78,7 +103,7 @@ begin
 			i2s_o_tvalid => i_i2s_tvalid
 		);
 
-	fft_fifo: entity fifo_generator_v9_3
+	bram_fifo: entity work.fifo_generator_v9_3(fifo_generator_v9_3_a)
 		port map (
 			s_aresetn => i_reset,
 			s_aclk => i_mclk,
@@ -91,7 +116,7 @@ begin
 			m_axis_tdata => i_fft_s_axis_tdata
 		);
 		
-	fft: entity xfft_v8_0
+	fft: xfft_v8_0
 		port map (
 			aclk => i_clk,
 			s_axis_config_tdata => (others => '0'),

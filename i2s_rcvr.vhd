@@ -58,14 +58,14 @@ begin
 		if I2S_I_RESET = '1' then
 			sr_sample <= (others => '0');
 			sr_valid <= '0';
-			sr_count <= 0;
+			sr_count <= b"00000";
 		elsif rising_edge(i_bclk) then
 			sr_sample <= sr_sample(sr_sample'high - 1 downto sr_sample'low) & i_data;
 			sr_count <= sr_count + 1;
 			
 			if sr_count = word_sz then
 				sr_valid <= '1';
-				sr_count <= 0;
+				sr_count <= b"00000";
 			else
 				sr_valid <= '0';
 			end if;
