@@ -108,6 +108,11 @@
     <transform xil_pn:end_ts="1740685723" xil_pn:in_ck="-5113227810765412393" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1740685723">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="clkgen.vhd"/>
       <outfile xil_pn:name="i2s_rcvr.vhd"/>
       <outfile xil_pn:name="tb_clkgen.vhd"/>
@@ -123,10 +128,16 @@
     <transform xil_pn:end_ts="1740678760" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="740252279554794896" xil_pn:start_ts="1740678760">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1740685723" xil_pn:in_ck="-5113227810765412393" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1740685723">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="clkgen.vhd"/>
       <outfile xil_pn:name="i2s_rcvr.vhd"/>
       <outfile xil_pn:name="tb_clkgen.vhd"/>
@@ -134,144 +145,35 @@
     <transform xil_pn:end_ts="1740685729" xil_pn:in_ck="-5113227810765412393" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-5510825233313632850" xil_pn:start_ts="1740685723">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="fuse.log"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="tb_clkgen_beh.prj"/>
-      <outfile xil_pn:name="tb_clkgen_isim_beh.exe"/>
-      <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
     <transform xil_pn:end_ts="1740685730" xil_pn:in_ck="7328784556707723704" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="1241872336256547362" xil_pn:start_ts="1740685729">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="tb_clkgen_isim_beh.wdb"/>
+      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1740333847" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1740333847">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1740677693" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="2069528568835792576" xil_pn:start_ts="1740677693">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1740677693" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="740252279554794896" xil_pn:start_ts="1740677693">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1740333847" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1740333847">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1740677693" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-4110711259105252734" xil_pn:start_ts="1740677693">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1740333847" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="250970745955965653" xil_pn:start_ts="1740333847">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1740677693" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-1775187633334148582" xil_pn:start_ts="1740677693">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1740677826" xil_pn:in_ck="1420112628732659613" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-8871418461013473303" xil_pn:start_ts="1740677812">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
-      <outfile xil_pn:name="i2s_rcvr.lso"/>
-      <outfile xil_pn:name="i2s_rcvr.ngc"/>
-      <outfile xil_pn:name="i2s_rcvr.ngr"/>
-      <outfile xil_pn:name="i2s_rcvr.prj"/>
-      <outfile xil_pn:name="i2s_rcvr.stx"/>
-      <outfile xil_pn:name="i2s_rcvr.syr"/>
-      <outfile xil_pn:name="i2s_rcvr.xst"/>
-      <outfile xil_pn:name="i2s_rcvr_xst.xrpt"/>
-      <outfile xil_pn:name="webtalk_pn.xml"/>
-      <outfile xil_pn:name="xst"/>
-    </transform>
     <transform xil_pn:end_ts="1740678390" xil_pn:in_ck="112913104423683" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-3743008308418270089" xil_pn:start_ts="1740678390">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1740678398" xil_pn:in_ck="-8097224356150551870" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-4635613922050372037" xil_pn:start_ts="1740678390">
-      <status xil_pn:value="FailedRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <outfile xil_pn:name="_ngo"/>
-      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
-      <outfile xil_pn:name="i2s_rcvr.bld"/>
-      <outfile xil_pn:name="i2s_rcvr.ngd"/>
-      <outfile xil_pn:name="i2s_rcvr_ngdbuild.xrpt"/>
-    </transform>
-    <transform xil_pn:end_ts="1740677850" xil_pn:in_ck="-6429334841197566908" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="6093601622908603872" xil_pn:start_ts="1740677836">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
-      <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
-      <outfile xil_pn:name="i2s_rcvr.pcf"/>
-      <outfile xil_pn:name="i2s_rcvr_map.map"/>
-      <outfile xil_pn:name="i2s_rcvr_map.mrp"/>
-      <outfile xil_pn:name="i2s_rcvr_map.ncd"/>
-      <outfile xil_pn:name="i2s_rcvr_map.ngm"/>
-      <outfile xil_pn:name="i2s_rcvr_map.xrpt"/>
-      <outfile xil_pn:name="i2s_rcvr_summary.xml"/>
-      <outfile xil_pn:name="i2s_rcvr_usage.xml"/>
-    </transform>
-    <transform xil_pn:end_ts="1740677871" xil_pn:in_ck="4680330278556913357" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="93661965788626211" xil_pn:start_ts="1740677850">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
-      <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
-      <outfile xil_pn:name="i2s_rcvr.ncd"/>
-      <outfile xil_pn:name="i2s_rcvr.pad"/>
-      <outfile xil_pn:name="i2s_rcvr.par"/>
-      <outfile xil_pn:name="i2s_rcvr.ptwx"/>
-      <outfile xil_pn:name="i2s_rcvr.unroutes"/>
-      <outfile xil_pn:name="i2s_rcvr.xpi"/>
-      <outfile xil_pn:name="i2s_rcvr_pad.csv"/>
-      <outfile xil_pn:name="i2s_rcvr_pad.txt"/>
-      <outfile xil_pn:name="i2s_rcvr_par.xrpt"/>
-    </transform>
-    <transform xil_pn:end_ts="1740677884" xil_pn:in_ck="5388976053842271661" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="4970201210546912173" xil_pn:start_ts="1740677871">
-      <status xil_pn:value="AbortedRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
-      <outfile xil_pn:name="i2s_rcvr.bgn"/>
-      <outfile xil_pn:name="i2s_rcvr.bin"/>
-      <outfile xil_pn:name="i2s_rcvr.bit"/>
-      <outfile xil_pn:name="i2s_rcvr.drc"/>
-      <outfile xil_pn:name="i2s_rcvr.ut"/>
-      <outfile xil_pn:name="usage_statistics_webtalk.html"/>
-      <outfile xil_pn:name="webtalk.log"/>
-      <outfile xil_pn:name="webtalk_pn.xml"/>
-    </transform>
-    <transform xil_pn:end_ts="1740677871" xil_pn:in_ck="3719152615015793968" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416185" xil_pn:start_ts="1740677863">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="InputChanged"/>
-      <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
-      <outfile xil_pn:name="i2s_rcvr.twr"/>
-      <outfile xil_pn:name="i2s_rcvr.twx"/>
     </transform>
   </transforms>
 

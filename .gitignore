@@ -47,3 +47,4 @@ _xmsgs
 xilinxsim.ini
 isim
 fuseRelaunch.cmd
+ipcore_dir
