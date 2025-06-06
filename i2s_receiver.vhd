@@ -14,7 +14,7 @@ entity i2s_receiver is
 		I2S_O_MCLK: out std_logic; -- Master clock
 		I2S_O_LRCLK: out std_logic; -- Word clock
 		I2S_O_BCLK: out std_logic; -- Bit clock - 32bit per sample (24bit + 8bit padding), dual channel
-		I2S_O_TDATA: out std_logic_vector(23 downto 0);
+		I2S_O_TDATA: out std_logic_vector(31 downto 0);
 		I2S_O_TVALID: out std_logic
 	);
 end i2s_receiver;
@@ -28,7 +28,7 @@ architecture rtl of i2s_receiver is
 	signal i_bclk: std_logic;
 	signal i_data: std_logic;
 	
-	signal sr_sample: std_logic_vector(23 downto 0);
+	signal sr_sample: std_logic_vector(31 downto 0) := (others => '0');
 	signal sr_valid: std_logic;
 	signal sr_count: unsigned(4 downto 0);
 	signal sr_collecting: std_logic;
@@ -83,10 +83,10 @@ begin
 					sr_channel_left <= '0';
 				end if;
 			-- Shifting frame into SR
-			elsif collecting = '1' then
+			elsif sr_collecting = '1' then
 				-- BCLK rising edge
-				if (bclk = '1') and (last_bclk = '0') then
-					sr_sample(23 - sr_count) <= i_data;
+				if (i_bclk = '1') and (last_bclk = '0') then
+					sr_sample(23 - to_integer(unsigned(sr_count))) <= i_data;
 					
 					if sr_count = word_sz then
 						-- Sample ready
