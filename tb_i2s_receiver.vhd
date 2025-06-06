@@ -112,7 +112,6 @@ BEGIN
 	end process;
 	
 	-- Generate report
-
 	report_results: process
 		variable L: line;
 	begin
