@@ -60,9 +60,9 @@ architecture rtl of main is
 	signal i_fft_s_axis_tlast  : std_logic;
 	signal i_fft_frame_cnt     : integer range 0 to 1023 := 0; 
 
-	signal i_fft_m_axis_tdata  : std_logic_vector(31 downto 0); -- Complex output
+	signal i_fft_m_axis_tdata  : std_logic_vector(31 downto 0);
 	signal i_fft_m_axis_tvalid : std_logic;
-	signal i_fft_m_axis_tready : std_logic := '1';              -- Always accept
+	signal i_fft_m_axis_tready : std_logic := '1';
 	signal i_fft_m_axis_tlast  : std_logic;
 begin
 
