@@ -51,7 +51,7 @@ architecture rtl of main is
 	signal i_bclk: std_logic;
 	
 	signal i_i2s_tready: std_logic;
-	signal i_i2s_tdata: std_logic_vector(31 downto 0);
+	signal i_i2s_tdata: std_logic_vector(23 downto 0);
 	signal i_i2s_tvalid: std_logic;
 	
 	signal i_fft_s_axis_tdata  : std_logic_vector(15 downto 0);
@@ -90,7 +90,7 @@ begin
 			O => i_data
 		);
 		
-	i2s_rcvr: entity work.i2s_rcvr(rtl)
+	i2s_receiver: entity work.i2s_receiver(rtl)
 		port map (
 			i2s_i_reset => i_reset,
 			i2s_i_sysclk => i_sysclk,

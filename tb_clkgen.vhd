@@ -13,12 +13,12 @@ architecture test of tb_clkgen is
 
  	--outputs
 	signal clk_div1 : std_logic;
-	signal clk_div64 : std_logic;
-	signal clk_div512 : std_logic;
+	signal clk_div2 : std_logic;
+	signal clk_div128 : std_logic;
 	
 	signal cnt_div1 : integer := 0;
-	signal cnt_div64 : integer := 0;
-	signal cnt_div512 : integer := 0;
+	signal cnt_div2 : integer := 0;
+	signal cnt_div128 : integer := 0;
 
 	constant in_clk_period : time := 20.35 ns;
 	constant reset_period : time := 100 ns;
@@ -29,8 +29,8 @@ begin
 		in_clk => in_clk,
 		reset => in_rst,
 		clk_div1 => clk_div1,
-		clk_div64 => clk_div64,
-		clk_div512 => clk_div512
+		clk_div2 => clk_div2,
+		clk_div128 => clk_div128
 	);
 
 	input_clock: process
@@ -48,17 +48,17 @@ begin
 		end if;
 	end process;
 	
-	count_div64: process(clk_div64)
+	count_div2: process(clk_div2)
 	begin
-		if rising_edge(clk_div64) then
-			cnt_div64 <= cnt_div64 + 1;
+		if rising_edge(clk_div2) then
+			cnt_div2 <= cnt_div2 + 1;
 		end if;
 	end process;
 	
-	count_div512: process(clk_div512)
+	count_div128: process(clk_div128)
 	begin
-		if rising_edge(clk_div512) then
-			cnt_div512 <= cnt_div512 + 1;
+		if rising_edge(clk_div128) then
+			cnt_div128 <= cnt_div128 + 1;
 		end if;
 	end process;
 
@@ -68,13 +68,13 @@ begin
 		wait for reset_period;
 		in_rst <= '0';
 		
-		assert cnt_div1 = 0 and cnt_div64 = 0 and cnt_div512 = 0
+		assert cnt_div1 = 0 and cnt_div2 = 0 and cnt_div128 = 0
 			report "Clocks should not pulse when reset is asserted"
 			severity error;
 
 		wait for test_period;
 
-		assert cnt_div1 = 512 and cnt_div64 = 8 and cnt_div512 = 1
+		assert cnt_div1 = 512 and cnt_div2 = 256 and cnt_div128 = 4
 			report "Output clocks did not pulse expected number of times"
 			severity error;
 			
@@ -90,12 +90,12 @@ begin
 		write(L, cnt_div1);
 		writeline(output, L);
 
-		write(L, string'("div64 ticks: "));
-		write(L, cnt_div64);
+		write(L, string'("div2 ticks: "));
+		write(L, cnt_div2);
 		writeline(output, L);
 
-		write(L, string'("div512 ticks: "));
-		write(L, cnt_div512);
+		write(L, string'("div128 ticks: "));
+		write(L, cnt_div128);
 		writeline(output, L);
 
 		wait;

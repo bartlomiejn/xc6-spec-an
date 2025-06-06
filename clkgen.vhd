@@ -8,8 +8,8 @@ entity clkgen is
 		in_clk: in std_logic; 
 		
 		clk_div1: out std_logic;
-		clk_div64: out std_logic; 
-		clk_div512: out std_logic
+		clk_div2: out std_logic; 
+		clk_div128: out std_logic
 	);
 end clkgen;
 
@@ -31,8 +31,8 @@ begin
 	end process;
 
 	clk_div1 <= i_clk;
-	clk_div64 <= counter(5);
-	clk_div512 <= counter(8);
+	clk_div2 <= counter(0);
+	clk_div128 <= counter(6);
 
 end rtl;
 
