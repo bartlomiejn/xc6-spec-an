@@ -1,4 +1,3 @@
---------------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 library std;
@@ -36,32 +35,36 @@ ARCHITECTURE behavior OF tb_i2s_receiver IS
    signal I2S_O_TDATA : std_logic_vector(31 downto 0);
    signal I2S_O_TVALID : std_logic;
 	
-	-- Output clock counters
+	-- Stimulus signals
 	signal I2S_O_MCLK_count : integer := 0;
 	signal I2S_O_LRCLK_count : integer := 0;
 	signal I2S_O_BCLK_count : integer := 0;
 
-   -- Period definitions
+	signal i2s_mock_left : std_logic_vector(31 downto 0) 
+		:= "11000011010110100000111100011000";
+	signal i2s_mock_right : std_logic_vector(31 downto 0) 
+		:= "00111100101001011111000011100111";
+
+   -- Stimulus periods
    constant I2S_I_SYSCLK_period : time := 40.6901 ns; -- 24.576MHz
 	constant I2S_I_RESET_period : time := 100 ns;
 	constant test_period : time := I2S_I_SYSCLK_period * 1024;
 BEGIN
  
-	-- Instantiate the Unit Under Test (UUT)
-   uut: i2s_receiver PORT MAP (
-          I2S_I_RESET => I2S_I_RESET,
-          I2S_I_SYSCLK => I2S_I_SYSCLK,
-          I2S_I_DATA => I2S_I_DATA,
-          I2S_I_TREADY => I2S_I_TREADY,
-          I2S_O_MCLK => I2S_O_MCLK,
-          I2S_O_LRCLK => I2S_O_LRCLK,
-          I2S_O_BCLK => I2S_O_BCLK,
-          I2S_O_TDATA => I2S_O_TDATA,
-          I2S_O_TVALID => I2S_O_TVALID
-        );
+   uut: i2s_receiver 
+		port map (
+			I2S_I_RESET => I2S_I_RESET,
+			I2S_I_SYSCLK => I2S_I_SYSCLK,
+			I2S_I_DATA => I2S_I_DATA,
+			I2S_I_TREADY => I2S_I_TREADY,
+			I2S_O_MCLK => I2S_O_MCLK,
+			I2S_O_LRCLK => I2S_O_LRCLK,
+			I2S_O_BCLK => I2S_O_BCLK,
+			I2S_O_TDATA => I2S_O_TDATA,
+			I2S_O_TVALID => I2S_O_TVALID
+		);
 
-	-- Input clock process
-	input_sysclk: process
+	stimulus_sysclk: process
 	begin
 		I2S_I_SYSCLK <= '0';
 		wait for I2S_I_SYSCLK_period;
@@ -69,8 +72,27 @@ BEGIN
 		wait for I2S_I_SYSCLK_period;
 	end process;
 
-   -- Stimulus process
-   stimulus: process
+	stimulus_data: process
+		variable i : integer;
+	begin
+		while true loop
+			-- Left channel mock data
+			wait until rising_edge(I2S_O_LRCLK);
+			for i in i2s_mock_left'range loop
+				I2S_I_DATA <= i2s_mock_left(i);
+				wait until falling_edge(I2S_O_MCLK);
+			end loop;
+		
+			-- Right channel mock data
+			wait until falling_edge(I2S_O_LRCLK);
+			for i in i2s_mock_right'range loop
+				I2S_I_DATA <= i2s_mock_right(i);
+				wait until falling_edge(I2S_O_MCLK);
+			end loop;
+		end loop;
+	end process;
+
+   stimulus_main: process
    begin		
 		I2S_I_RESET <= '1';
 		wait for I2S_I_RESET_period;
