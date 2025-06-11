@@ -20,7 +20,7 @@ entity i2s_receiver is
 end i2s_receiver;
 
 architecture rtl of i2s_receiver is
-	constant word_sz: natural := 24;
+	constant word_sz: natural := 23;
 	
 	signal i_sysclk: std_logic;
 	signal i_mclk: std_logic;
@@ -74,8 +74,10 @@ begin
 			
 			-- Start of new frame
 			if i_lrclk /= last_lrclk then
+				sr_valid <= '0';
 				sr_collecting <= '1';
 				sr_count <= b"00000";
+				sr_sample <= (others => '0');
 				
 				if i_lrclk = '0' then
 					sr_channel_left <= '1';
