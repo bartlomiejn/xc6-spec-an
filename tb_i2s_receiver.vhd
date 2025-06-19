@@ -40,9 +40,9 @@ ARCHITECTURE behavior OF tb_i2s_receiver IS
 	signal I2S_O_BCLK_count : integer := 0;
 
 	signal i2s_mock_left : std_logic_vector(31 downto 0)
-	    := "11000011010110100000111100011000";
+	   := "11101010101010101100101010101010";
 	signal i2s_mock_right : std_logic_vector(31 downto 0)
-		:= "00111100101001011111000011100111";
+		:= "00110101010101010101010101010101";
 
 	-- Stimulus periods
 	constant I2S_I_SYSCLK_period : time := 40.6901 ns *4; -- 24.576MHz
@@ -79,17 +79,23 @@ BEGIN
 	begin
 		-- Left channel mock data
 		wait until rising_edge(I2S_O_LRCLK);
+		
 		for i in 0 to 31 loop
-			I2S_I_DATA <= i2s_mock_left(i);
 			wait until falling_edge(I2S_O_MCLK);
+			I2S_I_DATA <= i2s_mock_left(i);
 		end loop;
+		
+		I2S_I_DATA <= '0';
 
 		-- Right channel mock data
 		wait until falling_edge(I2S_O_LRCLK);
 		for i in 0 to 31 loop
-			I2S_I_DATA <= i2s_mock_right(i);
 			wait until falling_edge(I2S_O_MCLK);
+			I2S_I_DATA <= i2s_mock_right(i);
 		end loop;
+		
+		I2S_I_DATA <= '0';
+		
 	end process stimulus_data;
 
    stimulus_reset: process

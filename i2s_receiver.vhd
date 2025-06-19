@@ -22,50 +22,37 @@ end i2s_receiver;
 architecture rtl of i2s_receiver is
 	constant word_sz: natural := 23;
 	
-	signal i_sysclk: std_logic;
 	signal i_mclk: std_logic;
 	signal i_lrclk: std_logic;
 	signal i_bclk: std_logic;
-	signal i_data: std_logic;
 	
 	signal sr_sample: std_logic_vector(31 downto 0) := (others => '0');
 	signal sr_valid: std_logic;
 	signal sr_count: unsigned(4 downto 0);
 	signal sr_collecting: std_logic;
-	signal sr_channel_left: std_logic;
+	--signal sr_channel_left: std_logic;
 	
 	signal last_bclk: std_logic;
 	signal last_lrclk: std_logic;
 begin
-	I2S_SYSCLK_IBUF: IBUF
-		port map (
-			I => I2S_I_SYSCLK,
-			O => i_sysclk
-		);
-	
-	I2S_DATA_IBUF: IBUF
-		port map (
-			I => I2S_I_DATA,
-			O => i_data
-		);
 
 	clkgen: entity work.clkgen(rtl)
 		port map (
-			in_clk => i_sysclk,
+			in_clk => I2S_I_SYSCLK,
 			reset => I2S_I_RESET,
 			clk_div1 => i_mclk,
 			clk_div2 => i_bclk,
 			clk_div128 => i_lrclk 
 		);
 
-	shift_in: process(i_mclk)
+	shift_in: process(I2S_I_RESET, i_mclk)
 	begin
 		if I2S_I_RESET = '1' then
 			sr_sample <= (others => '0');
 			sr_valid <= '0';
 			sr_count <= b"00000";
 			sr_collecting <= '0';
-			sr_channel_left <= '0';
+			--sr_channel_left <= '0';
 			last_bclk <= '0';
 			last_lrclk <= '0';
 		elsif rising_edge(i_mclk) then
@@ -79,16 +66,16 @@ begin
 				sr_count <= b"00000";
 				sr_sample <= (others => '0');
 				
-				if i_lrclk = '0' then
-					sr_channel_left <= '1';
-				else
-					sr_channel_left <= '0';
-				end if;
+				--if i_lrclk = '0' then
+				--	sr_channel_left <= '1';
+				--else
+				--	sr_channel_left <= '0';
+				--end if;
 			-- Shifting frame into SR
 			elsif sr_collecting = '1' then
 				-- BCLK rising edge
 				if (i_bclk = '1') and (last_bclk = '0') then
-					sr_sample(23 - to_integer(unsigned(sr_count))) <= i_data;
+					sr_sample(23 - to_integer(unsigned(sr_count))) <= I2S_I_DATA;
 					
 					if sr_count = word_sz then
 						-- Sample ready

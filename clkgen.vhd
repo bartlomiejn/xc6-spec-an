@@ -14,10 +14,11 @@ entity clkgen is
 end clkgen;
 
 architecture rtl of clkgen is
-	signal counter: unsigned(8 downto 0) := (others => '0');
+	signal counter: unsigned(6 downto 0) := (others => '0');
 	signal i_clk: std_logic := '0';
 begin
-	process (reset, in_clk)
+
+	count_in_clk: process (reset, in_clk)
 	begin
 		if reset = '1' then
 			counter <= (others => '0');
@@ -29,10 +30,18 @@ begin
 			end if;
 		end if;
 	end process;
-
+	
 	clk_div1 <= i_clk;
-	clk_div2 <= counter(0);
-	clk_div128 <= counter(6);
+	clk_div2 <= not(counter(0));
+	
+	gen_clk_div128: process (reset, in_clk)
+	begin
+		if reset = '1' then
+			clk_div128 <= '0';
+		elsif falling_edge(in_clk) then
+			clk_div128 <= std_logic(counter(6));
+		end if;
+	end process;
 
 end rtl;
 

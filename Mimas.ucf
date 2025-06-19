@@ -14,7 +14,7 @@ NET "I2S_DATA" LOC = P32 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; # P1
 NET "I2S_LRCLK" LOC = P30 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; # P1-7 
 
 # I2S_RCVR OUTPUT TEST
-NET "I2S_RCVR_OUT" LOC = P35 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; # P1-3
+#NET "I2S_RCVR_OUT" LOC = P35 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; # P1-3
 
 ###################################################################################################################################################
 #                                                 LEDs                                                                                            #
@@ -33,7 +33,7 @@ NET "I2S_RCVR_OUT" LOC = P35 | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST; 
 #                                                Push Button Switches                                                                             #
 ################################################################################################################################################### 
 
-#NET "SW0" 			  LOC = P124	| IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST | PULLUP;
+NET "SW0" 			  LOC = P124	| IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST | PULLUP;
 #NET "SW1" 			  LOC = P123	| IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST | PULLUP;
 #NET "SW2" 			  LOC = P121	| IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST | PULLUP;
 #NET "SW3" 			  LOC = P120	| IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = FAST | PULLUP;
